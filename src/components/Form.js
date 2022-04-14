@@ -34,9 +34,9 @@ const Form = () => {
 
     return(
         <>
-            {inputFields.map((inputField, index) => {
+            {inputFields.map((inputField) => {
                 return(
-                    <div key={index}>
+                    <div key={inputField.id}>
                         <input onChange={(event) => handleChangeInput(inputField.id, event)} type='text'></input>
                         <button onClick={handleAddButton}>+</button>
                         <button disabled={inputFields.length === 1} onClick={() => handleRemoveButton(inputField.id)}>-</button>
