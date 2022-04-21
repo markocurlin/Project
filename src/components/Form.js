@@ -34,7 +34,7 @@ const Form = () => {
 
     return(
         <>
-            {inputFields.map((inputField) => {
+            {inputFields.map( inputField => {
                 return(
                     <div key={inputField.id}>
                         <input onChange={(event) => handleChangeInput(inputField.id, event)} type='text'></input>
