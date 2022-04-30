@@ -2,8 +2,19 @@
 import Header from './components/Header';
 import Card from './components/Card';
 import Modal from './components/Modal';
+import { useState } from 'react';
 
 function App() {
+  const [modalState, setModalState] = useState(false);
+
+  const handleModal = () => {
+    if (modalState === true) {
+      setModalState(false);
+    } else {
+      setModalState(true);
+    }
+  };
+
   return (
     <>
       <head>
@@ -14,11 +25,11 @@ function App() {
       <body class='theme-light'>
         <div class='page'> 
           <header class="navbar navbar-expand-md navbar-light d-print-none">
-            {/* Rjesi pravi header */}
+            {/* Rjesi navbar */}
           </header>
           <div class='navbar-expand-md'></div>
           <div class='page-wrapper'>
-            <Header/>
+            <Header handleModal={handleModal}/>
             
             <div class='page-body'>
               <div class='container-xl'>
@@ -57,7 +68,7 @@ function App() {
 
           </div>
         </div>
-        <Modal />
+        { modalState === false ?  <></> : <Modal handleModal={handleModal}/>}
       </body>
     </>
   );
