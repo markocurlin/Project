@@ -1,10 +1,15 @@
-//import './App.css';
+import { useState } from 'react';
 import Header from './components/Header';
 import Card from './components/Card';
 import Modal from './components/Modal';
-import { useState } from 'react';
 
 function App() {
+  const [data, setData] = useState({
+    activityCost: [],
+    equipmentCost: [],
+    promotionCost: [],
+    travelExpenses: [],
+  });
   const [modalState, setModalState] = useState(false);
 
   const handleModal = () => {
@@ -14,6 +19,14 @@ function App() {
       setModalState(true);
     }
   };
+
+  const handleData = (category, dataFromModal) => {
+    const newData = data;
+
+    newData[category].push(dataFromModal);
+
+    setData(newData);
+  }
 
   return (
     <>
@@ -68,7 +81,7 @@ function App() {
 
           </div>
         </div>
-        { modalState === false ?  <></> : <Modal handleModal={handleModal}/>}
+        <Modal handleModal={handleModal} handleData={handleData} style={ modalState === true ? "show" : ""} display={ modalState === true ? "1055" : "-3"}/>
       </body>
     </>
   );
